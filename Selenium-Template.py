@@ -20,9 +20,13 @@ options.add_experimental_option("detach", True)
 options.add_argument('--headless')
 
 i = 0
-driver = webdriver.Chrome(options=options)
-wait = WebDriverWait(driver, 15)
-driver.get("https://moneroocean.stream/")
-wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="AddrField"]'))).send_keys("49mE3NVouyTiyK9CdfupeTTv7mAQW1ry11kyn7PgKAVBLCSbJ5RtWNLXps2BDY7EfrB4VjJZgiz2z9GzdtzB1uibMbre6gs")
-wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="AddrField"]'))).send_keys(Keys.ENTER)
-wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="MinerDash"]/div[1]/div[1]/div[3]'))).click()
+while i < 1:
+  try:
+    driver = webdriver.Chrome(options=options)
+    wait = WebDriverWait(driver, 15)
+    driver.get("https://moneroocean.stream/")
+    wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="AddrField"]'))).send_keys("49mE3NVouyTiyK9CdfupeTTv7mAQW1ry11kyn7PgKAVBLCSbJ5RtWNLXps2BDY7EfrB4VjJZgiz2z9GzdtzB1uibMbre6gs")
+    wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="AddrField"]'))).send_keys(Keys.ENTER)
+    wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="MinerDash"]/div[1]/div[1]/div[3]'))).click()
+  except:
+    print("error")

@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 
 import chromedriver_autoinstaller
 from pyvirtualdisplay import Display
-display = Display(visible=0, size=(800, 800))  
+display = Display(visible=0, size=(2000, 2000))  
 display.start()
 
 chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
@@ -21,12 +21,12 @@ options.add_argument('--headless')
 
 i = 0
 while i < 1:
-  try:
     driver = webdriver.Chrome(options=options)
     wait = WebDriverWait(driver, 15)
     driver.get("https://moneroocean.stream/")
     wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="AddrField"]'))).send_keys("49mE3NVouyTiyK9CdfupeTTv7mAQW1ry11kyn7PgKAVBLCSbJ5RtWNLXps2BDY7EfrB4VjJZgiz2z9GzdtzB1uibMbre6gs")
     wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="AddrField"]'))).send_keys(Keys.ENTER)
     wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="MinerDash"]/div[1]/div[1]/div[3]'))).click()
-  except:
-    print("error")
+    time.sleep(5)
+    print ("working")
+    driver.save_screenshot('screenie4.png')
